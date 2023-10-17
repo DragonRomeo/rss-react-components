@@ -1,7 +1,7 @@
 {
   "name": "rss-react-components",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,8 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "fix": "yarn run lint --fix",
-    "prepare": "husky install",
-    "postinstall": "husky install"
+    "prepare": "yarn run husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.0.1",
