@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 1280px;
   width: 100%;
@@ -52,4 +58,12 @@ button {
 button:hover {
   background-color: white;
   color: black;
+}
+
+ul {
+  font-size: 18px;
+}
+
+li {
+  list-style-type: none
 }
