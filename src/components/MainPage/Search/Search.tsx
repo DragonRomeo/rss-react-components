@@ -15,7 +15,6 @@ export default class Search extends Component<Props, State> {
       value: '',
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event: { target: { value: string } }) {
