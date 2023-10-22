@@ -58,15 +58,18 @@ export default class Results extends Component<Props, State> {
 
   render() {
     const { error, isLoaded, items } = this.state;
+    const storageKey = localStorage.getItem('inputKey');
     if (error) {
       return <p>Error: {error.message}</p>;
     } else if (!isLoaded) {
       return <p>Loading...</p>;
     } else {
-      if (localStorage.getItem('inputKey')) {
+      if (storageKey !== null) {
         //find key in api logic
-        const obj = items.find((item) => item.name === localStorage.getItem('inputKey'));
-        console.log(localStorage.getItem('inputKey'));
+        const trail = storageKey.trim().toLowerCase();
+        const obj = items.find((item) => item.name.toLowerCase().includes(trail));
+        console.log(storageKey);
+        console.log(trail);
         console.log(obj);
         //str includes?
         const content = obj ? (
