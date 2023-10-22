@@ -65,15 +65,9 @@ export default class Results extends Component<Props, State> {
       return <p>Loading...</p>;
     } else {
       if (storageKey !== null) {
-        //find key in api logic
         const trail = storageKey.trim().toLowerCase();
-        //TODO: This found only 1 result.
         const obj = items.filter((item) => item.name.toLowerCase().includes(trail));
-
-        // console.log(storageKey);
-        // console.log(trail);
-        // console.log(obj);
-
+        
         //TODO: Maybe search used only for 1t page. Need to test it
         /* Potential logic for fix it - if items.find return undefined, item = item.next ? 
         if(item.next === null) return Nothing found */
