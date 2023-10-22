@@ -23,6 +23,7 @@ export default class Search extends Component<Props, State> {
     localStorage.setItem('inputKey', event.target.value);
   }
 
+  //TODO: add placeholder
   render() {
     return (
       <div className="searchContainer">

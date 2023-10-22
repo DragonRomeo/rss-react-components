@@ -1,11 +1,34 @@
 import React, { Component } from 'react';
 
+export interface People {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  species: string[];
+  vehicles: Array<string>;
+  starships: Array<string>;
+  created: string;
+  edited: string;
+  url: string;
+}
+
 type Props = {};
 
-type State = {};
+type State = {
+  error: null | unknown;
+  isLoaded: boolean;
+  items: Array<People>;
+};
 
 export default class Results extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props | Readonly<Props>) {
     super(props);
     this.state = {
       error: null,
@@ -40,14 +63,33 @@ export default class Results extends Component<Props, State> {
     } else if (!isLoaded) {
       return <p>Loading...</p>;
     } else {
-      return (
-        <ul>
-          {items.map((item) => (
-            <li key={item.name}>{`${item.name}, ${item.height}cm, ${item.gender}`}</li>
-          ))}
-        </ul>
-      );
+      if (localStorage.getItem('inputKey')) {
+        //find key in api logic
+        const obj = items.find((item) => item.name === localStorage.getItem('inputKey'));
+        console.log(localStorage.getItem('inputKey'));
+        console.log(obj);
+        //str includes?
+        const content = obj ? (
+          <>
+            <p>{`name: ${obj.name}`}</p>
+            <p>{`height: ${obj.height}`}</p>
+            <p>{`birth: ${obj.birth_year}`}</p>
+            <p>{`gender: ${obj.gender}`}</p>
+          </>
+        ) : (
+          <>Nothing found</>
+        );
+
+        return content;
+      } else {
+        return (
+          <ul>
+            {items.map((item) => (
+              <li key={item.name}>{`${item.name}, ${item.height}cm, ${item.gender}`}</li>
+            ))}
+          </ul>
+        );
+      }
     }
-    // return <div className="resultsContainer">Results</div>;
   }
 }
