@@ -67,21 +67,37 @@ export default class Results extends Component<Props, State> {
       if (storageKey !== null) {
         //find key in api logic
         const trail = storageKey.trim().toLowerCase();
-        const obj = items.find((item) => item.name.toLowerCase().includes(trail));
-        console.log(storageKey);
-        console.log(trail);
-        console.log(obj);
-        //str includes?
-        const content = obj ? (
-          <>
-            <p>{`name: ${obj.name}`}</p>
-            <p>{`height: ${obj.height}`}</p>
-            <p>{`birth: ${obj.birth_year}`}</p>
-            <p>{`gender: ${obj.gender}`}</p>
-          </>
-        ) : (
-          <>Nothing found</>
-        );
+        //TODO: This found only 1 result.
+        const obj = items.filter((item) => item.name.toLowerCase().includes(trail));
+
+        // console.log(storageKey);
+        // console.log(trail);
+        // console.log(obj);
+
+        //TODO: Maybe search used only for 1t page. Need to test it
+        /* Potential logic for fix it - if items.find return undefined, item = item.next ? 
+        if(item.next === null) return Nothing found */
+
+        const content =
+          obj.length > 0 ? (
+            <>
+              {console.log(obj)}
+
+              {obj.map((item) => {
+                return (
+                  <ul key={item.name}>
+                    {/* {console.log(item.name)} */}
+                    <li>{`name: ${item.name}`}</li>
+                    <li>{`height: ${item.height}`}</li>
+                    <li>{`birth: ${item.birth_year}`}</li>
+                    <li>{`gender: ${item.gender}`}</li>
+                  </ul>
+                );
+              })}
+            </>
+          ) : (
+            <>Nothing found</>
+          );
 
         return content;
       } else {
