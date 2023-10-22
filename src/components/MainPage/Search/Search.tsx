@@ -19,6 +19,7 @@ export default class Search extends Component<Props, State> {
 
   handleChange(event: { target: { value: string } }) {
     this.setState({ value: event.target.value });
+    //TODO: localStorage.Set should use after click btn 'search' - not like that.
     localStorage.setItem('inputKey', event.target.value);
   }
 
