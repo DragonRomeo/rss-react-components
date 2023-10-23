@@ -22,10 +22,6 @@ class MainPage extends Component<Props, State> {
     this.setState({ search: value });
   };
 
-  componentDidMount(): void {
-    console.log(this.state.search);
-  }
-
   render() {
     return (
       <div className="mainPage">
