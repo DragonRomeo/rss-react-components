@@ -69,18 +69,16 @@ export default class Results extends Component<Props, State> {
     } else {
       if (storageKey !== null) {
         const trail = storageKey.trim().toLowerCase();
-        const obj = items.filter((item) => item.name.toLowerCase().includes(trail));
+        const results = items.filter((item) => item.name.toLowerCase().includes(trail));
 
         //TODO: Maybe search used only for 1t page. Need to test it
-        /* Potential logic for fix it - if items.find return undefined, item = item.next ? 
-        if(item.next === null) return Nothing found */
 
         const content =
-          obj.length > 0 ? (
+          results.length > 0 ? (
             <>
-              {console.log(obj)}
+              {console.log(results)}
 
-              {obj.map((item) => {
+              {results.map((item) => {
                 return (
                   <ul key={item.name}>
                     {/* {console.log(item.name)} */}
