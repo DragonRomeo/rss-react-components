@@ -21,6 +21,7 @@ export interface People {
 
 type Props = {
   children?: JSX.Element;
+  data?: string;
 };
 
 type State = {

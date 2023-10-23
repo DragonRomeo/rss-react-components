@@ -14,7 +14,7 @@ class MainPage extends Component<Props, State> {
   constructor(props: Props | Readonly<Props>) {
     super(props);
     this.state = {
-      search: 'бумеранг не запущен',
+      search: 'empty',
     };
   }
 
@@ -29,9 +29,8 @@ class MainPage extends Component<Props, State> {
   render() {
     return (
       <div className="mainPage">
-        <p>{this.state.search}</p>
         <Search updateData={this.updateData} />
-        <Results />
+        <Results data={this.state.search} />
       </div>
     );
   }
