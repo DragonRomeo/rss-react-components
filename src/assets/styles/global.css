@@ -47,11 +47,12 @@ input {
 
 button {
   width: 100px;
-  height: 30px;
+  height: 41px;
   padding: 5px;
   border: 1px solid white;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 20px;
+  text-transform: capitalize;
   transition:
     background 0.5s,
     color 0.5s;
