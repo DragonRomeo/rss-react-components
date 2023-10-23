@@ -52,7 +52,9 @@ button {
   border: 1px solid white;
   border-radius: 5px;
   font-size: 18px;
-  transition: background 0.5s, color 0.5s;
+  transition:
+    background 0.5s,
+    color 0.5s;
 }
 
 button:hover {
@@ -65,5 +67,5 @@ ul {
 }
 
 li {
-  list-style-type: none
+  list-style-type: none;
 }
