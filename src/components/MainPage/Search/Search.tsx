@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 type Props = {
-  type?: string; //Replace for children?
+  children?: JSX.Element;
 };
 
 type State = {

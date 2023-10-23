@@ -19,10 +19,12 @@ export interface People {
   url: string;
 }
 
-type Props = {};
+type Props = {
+  children?: JSX.Element;
+};
 
 type State = {
-  error: null | unknown;
+  error: null | Error;
   isLoaded: boolean;
   items: Array<People>;
 };
