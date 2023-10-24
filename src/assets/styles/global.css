@@ -32,7 +32,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 80%;
-  min-height: 40vh;
+  min-height: 25vh;
 }
 
 .resultsContainer {
