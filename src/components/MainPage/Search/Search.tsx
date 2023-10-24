@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 
 type Props = {
   children?: JSX.Element;
-  updateData: (value: string) => void;
+  updateData: (value: number) => void;
 };
 
 type State = {
   value: string;
-  search: string;
+  search: number;
 };
 
 export default class Search extends Component<Props, State> {
   inputValue: string;
-  constructor(props: Props | Readonly<Props>) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       value: '',
-      search: 'transfer',
+      search: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -31,9 +31,13 @@ export default class Search extends Component<Props, State> {
   handleClick() {
     localStorage.setItem('inputKey', this.inputValue);
     this.props.updateData(this.state.search);
+    this.setState((prevState) => {
+      console.log(prevState);
+      return { search: ++prevState.search };
+    });
+    console.log(this.state.search);
   }
 
-  //TODO: add placeholder
   render() {
     return (
       <div className="searchContainer">

@@ -21,7 +21,7 @@ export interface People {
 
 type Props = {
   children?: JSX.Element;
-  data?: string;
+  data?: number;
 };
 
 type State = {
@@ -43,12 +43,9 @@ export default class Results extends Component<Props, State> {
   }
 
   getData = () => {
-    console.log('getData');
-    // console.log(this.storageKey)
     const url = this.storageKey
       ? `https://swapi.dev/api/people/?search=${this.storageKey}`
       : 'https://swapi.dev/api/people/';
-    console.log(url);
     fetch(url)
       .then((response) => response.json())
       .then(
@@ -71,16 +68,14 @@ export default class Results extends Component<Props, State> {
     this.getData();
   }
 
-  componentDidUpdate(prevProps: { data: string | undefined }): void {
+  componentDidUpdate(prevProps: { data: number | undefined }): void {
     if (this.props.data !== prevProps.data) {
-      console.log('кнопка была нажата, значит я обновлюсь один раз!!!');
       this.storageKey = localStorage.getItem('inputKey');
       this.getData();
     }
   }
 
   render() {
-    console.log('only render');
     const { error, isLoaded, items } = this.state;
     if (error) {
       return <p>Error: {error.message}</p>;
