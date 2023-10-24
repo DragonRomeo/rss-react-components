@@ -43,6 +43,7 @@ export default class Results extends Component<Props, State> {
   }
 
   getData = () => {
+    this.setState({ isLoaded: false });
     const url = this.storageKey
       ? `https://swapi.dev/api/people/?search=${this.storageKey}`
       : 'https://swapi.dev/api/people/';
