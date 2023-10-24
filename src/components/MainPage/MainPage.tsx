@@ -20,7 +20,6 @@ class MainPage extends Component<Props, State> {
 
   updateData = (value: number) => {
     this.setState({ search: value });
-    console.log('click');
   };
 
   render() {

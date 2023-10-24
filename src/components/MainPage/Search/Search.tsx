@@ -32,10 +32,8 @@ export default class Search extends Component<Props, State> {
     localStorage.setItem('inputKey', this.inputValue);
     this.props.updateData(this.state.search);
     this.setState((prevState) => {
-      console.log(prevState);
       return { search: ++prevState.search };
     });
-    console.log(this.state.search);
   }
 
   render() {
