@@ -31,6 +31,7 @@ type State = {
 };
 
 export default class Results extends Component<Props, State> {
+  storageKey: string | null;
   constructor(props: Props | Readonly<Props>) {
     super(props);
     this.state = {
@@ -38,10 +39,17 @@ export default class Results extends Component<Props, State> {
       isLoaded: false,
       items: [],
     };
+    this.storageKey = localStorage.getItem('inputKey');
   }
 
   componentDidMount(): void {
-    fetch('https://swapi.dev/api/people/')
+    const url = this.storageKey
+      ? `https://swapi.dev/api/people/?search=${this.storageKey}`
+      : 'https://swapi.dev/api/people/';
+    console.log(url);
+    console.log(this.props.data);
+
+    fetch(url)
       .then((response) => response.json())
       .then(
         (result) => {
@@ -60,28 +68,23 @@ export default class Results extends Component<Props, State> {
   }
 
   render() {
+    console.log('only render');
     const { error, isLoaded, items } = this.state;
-    const storageKey = localStorage.getItem('inputKey');
     if (error) {
       return <p>Error: {error.message}</p>;
     } else if (!isLoaded) {
       return <p>Loading...</p>;
     } else {
-      if (storageKey !== null) {
-        const trail = storageKey.trim().toLowerCase();
+      if (this.storageKey !== null) {
+        const trail = this.storageKey.trim().toLowerCase();
         const results = items.filter((item) => item.name.toLowerCase().includes(trail));
-
-        //TODO: Maybe search used only for 1t page. Need to test it
 
         const content =
           results.length > 0 ? (
             <>
-              {console.log(results)}
-
               {results.map((item) => {
                 return (
                   <ul key={item.name}>
-                    {/* {console.log(item.name)} */}
                     <li>{`name: ${item.name}`}</li>
                     <li>{`height: ${item.height}`}</li>
                     <li>{`birth: ${item.birth_year}`}</li>
