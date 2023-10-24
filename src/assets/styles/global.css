@@ -84,6 +84,10 @@ button:hover {
   border-radius: 25px;
 }
 
+.status {
+  font-size: 30px;
+}
+
 ul {
   font-size: 18px;
 }

@@ -79,9 +79,9 @@ export default class Results extends Component<Props, State> {
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <p>Error: {error.message}</p>;
+      return <p className="status">Error: {error.message}</p>;
     } else if (!isLoaded) {
-      return <p>Loading...</p>;
+      return <p className="status">Loading...</p>;
     } else {
       if (this.storageKey !== null) {
         const trail = this.storageKey.trim().toLowerCase();
