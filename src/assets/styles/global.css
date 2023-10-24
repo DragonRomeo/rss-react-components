@@ -32,7 +32,7 @@ body {
 .searchContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   width: 80%;
@@ -53,14 +53,19 @@ input {
   border: 2px solid transparent;
   border-radius: 33px;
   font-size: 22px;
+  transition: width 0.7s;
+}
+
+input:hover {
+  width: 340px;
 }
 
 button {
   width: 100px;
-  height: 41px;
+  height: 45px;
   padding: 5px;
-  border: 1px solid white;
-  border-radius: 5px;
+  border: 1px solid transparent;
+  border-radius: 28px;
   font-size: 20px;
   text-transform: capitalize;
   cursor: pointer;
@@ -77,6 +82,7 @@ button:hover {
 .itemContainer {
   display: flex;
   flex-direction: column;
+  padding-top: 15px;
   gap: 1rem;
   background-color: rgba(9, 1, 15, 0.3);
   width: 30%;
