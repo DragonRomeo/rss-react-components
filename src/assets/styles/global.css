@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Droid Sans", arial, verdana, sans-serif;
+  font-family: 'Droid Sans', arial, verdana, sans-serif;
 }
 
 #root {
@@ -16,7 +16,6 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  
 }
 
 .mainPage {
@@ -71,6 +70,12 @@ button:hover {
   color: black;
 }
 
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 ul {
   font-size: 18px;
 }
@@ -78,5 +83,5 @@ ul {
 li {
   list-style-type: none;
   font-weight: 700;
-	color: #ff6;
+  color: #ff6;
 }

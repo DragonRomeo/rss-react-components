@@ -89,18 +89,18 @@ export default class Results extends Component<Props, State> {
 
         const content =
           results.length > 0 ? (
-            <>
+            <div className="itemContainer">
               {results.map((item) => {
                 return (
                   <ul key={item.name}>
                     <li>{`name: ${item.name}`}</li>
-                    <li>{`height: ${item.height}`}</li>
+                    <li>{`height: ${item.height} cm`}</li>
                     <li>{`birth: ${item.birth_year}`}</li>
                     <li>{`gender: ${item.gender}`}</li>
                   </ul>
                 );
               })}
-            </>
+            </div>
           ) : (
             <>Nothing found</>
           );
