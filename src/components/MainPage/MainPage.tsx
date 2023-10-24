@@ -11,7 +11,7 @@ type State = {
 };
 
 class MainPage extends Component<Props, State> {
-  constructor(props: Props | Readonly<Props>) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       search: 0,
