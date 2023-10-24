@@ -16,7 +16,7 @@ export default class Search extends Component<Props, State> {
     super(props);
     this.state = {
       value: '',
-      search: 0,
+      search: 1,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
