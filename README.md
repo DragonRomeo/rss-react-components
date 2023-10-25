@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+Info for CrossCheck:
+1 - i use Vite, not NPM.
+2 - for ErrorBoundary click the button next to 'dont click'
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
