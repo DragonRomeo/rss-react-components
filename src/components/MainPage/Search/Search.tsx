@@ -36,6 +36,13 @@ export default class Search extends Component<Props, State> {
     });
   }
 
+  componentDidMount(): void {
+    const locStor = localStorage.getItem('inputKey');
+    if (locStor !== null) {
+      this.setState({ value: locStor });
+    }
+  }
+
   render() {
     return (
       <div className="searchContainer">
