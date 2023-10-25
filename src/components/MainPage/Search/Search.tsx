@@ -26,10 +26,10 @@ export default class Search extends Component<Props, State> {
   handleChange(event: { target: { value: string } }) {
     this.setState({ value: event.target.value });
     this.inputValue = event.target.value;
+    localStorage.setItem('inputKey', this.inputValue);
   }
 
   handleClick() {
-    localStorage.setItem('inputKey', this.inputValue);
     this.props.updateData(this.state.search);
     this.setState((prevState) => {
       return { search: prevState.search + 1 };
