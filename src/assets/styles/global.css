@@ -23,7 +23,8 @@ body {
 
 .pc {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-image: url('../images/vecteezy_old-vintage-pc-clipart-design-illustration_9385553_678.png');
   background-size: cover;
   width: 1250px;
@@ -85,7 +86,7 @@ input {
   transition: width 0.7s;
 }
 
-button {
+.buttonSearch {
   width: 93px;
   height: 40px;
   color: rgba(255, 255, 255, 0.87);
@@ -100,7 +101,7 @@ button {
     color 0.5s;
 }
 
-button:hover {
+.buttonSearch:hover {
   background-color: white;
   color: black;
 }
@@ -117,4 +118,36 @@ li {
   list-style-type: none;
   font-weight: 700;
   color: #ff6;
+}
+
+.errorBtnWrapper {
+  margin-top: 240px;
+  width: 711px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+  align-items: center;
+}
+
+.errBtn {
+  width: 27px;
+  height: 27px;
+  border: 3px solid black;
+  border-radius: 25px;
+  transition: transform 0.5s;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.errBtn:hover {
+  transform: scale(0.8);
+}
+
+.errorBtnTooltip {
+  color: black;
+  font-size: 19px;
+  border: 1px solid transparent;
+  padding: 5px;
+  background-color: yellow;
 }

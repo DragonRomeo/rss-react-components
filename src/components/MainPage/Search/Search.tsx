@@ -59,7 +59,9 @@ export default class Search extends Component<Props, State> {
             onChange={this.handleChange}
           />
         </label>
-        <button onClick={this.handleClick}>search</button>
+        <button className="buttonSearch" onClick={this.handleClick}>
+          search
+        </button>
       </div>
     );
   }

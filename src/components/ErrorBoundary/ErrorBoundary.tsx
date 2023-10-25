@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import MainPage from '../MainPage/MainPage';
-import ErrorBtn from './ErrorBtn/ErrorBtn';
 
 type Props = {
   children?: JSX.Element;
@@ -29,7 +28,6 @@ export class ErrorBoundary extends Component<Props, State> {
     return (
       <>
         <MainPage></MainPage>
-        <ErrorBtn></ErrorBtn>
       </>
     );
   }

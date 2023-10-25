@@ -26,8 +26,9 @@ export default class ErrorBtn extends Component<Props, State> {
       throw new Error('Yey Error boundary catch me');
     }
     return (
-      <div>
-        <button onClick={this.handleClick}>ErrorBtn</button>
+      <div className="errorBtnWrapper">
+        <p className="errorBtnTooltip">Dont click {'=>'} </p>
+        <button className="errBtn" onClick={this.handleClick}></button>
       </div>
     );
   }

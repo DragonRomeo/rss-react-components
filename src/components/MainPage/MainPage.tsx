@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Search from './Search/Search';
 import Results from './Results/Results';
+import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 
 type Props = {
   children?: JSX.Element;
@@ -31,6 +32,7 @@ class MainPage extends Component<Props, State> {
             <Results data={this.state.search} />
           </div>
         </div>
+        <ErrorBtn></ErrorBtn>
       </div>
     );
   }
