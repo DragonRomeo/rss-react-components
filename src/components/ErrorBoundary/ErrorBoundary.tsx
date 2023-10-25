@@ -1,4 +1,4 @@
-import { Component, ErrorInfo } from 'react';
+import { Component } from 'react';
 import MainPage from '../MainPage/MainPage';
 import ErrorBtn from './ErrorBtn/ErrorBtn';
 
@@ -18,7 +18,6 @@ export class ErrorBoundary extends Component<Props, State> {
 
   static getDerivedStateFromError(error: Error) {
     console.log(error);
-    console.log('поймал ошибку');
     return { hasError: true };
   }
 
