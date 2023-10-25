@@ -48,11 +48,10 @@ body {
 .searchContainer {
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
   align-items: flex-start;
   justify-content: center;
   width: 80%;
-  min-height: 12vh;
+  min-height: 14vh;
   padding-top: 10px;
 }
 
@@ -62,6 +61,18 @@ body {
   justify-content: center;
   width: 80%;
   min-height: 50vh;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  gap: 1rem;
+  background-color: rgba(9, 1, 15, 0.3);
+  width: 100%;
+  border: 1px solid transparent;
+  overflow-y: scroll;
+  margin-top: 10px;
 }
 
 input {
@@ -92,17 +103,6 @@ button {
 button:hover {
   background-color: white;
   color: black;
-}
-
-.itemContainer {
-  display: flex;
-  flex-direction: column;
-  padding-top: 15px;
-  gap: 1rem;
-  background-color: rgba(9, 1, 15, 0.3);
-  width: 100%;
-  border: 1px solid transparent;
-  border-radius: 25px;
 }
 
 .status {
