@@ -9,7 +9,6 @@
 
 body {
   margin: 0;
-  /* font-family: 'Droid Sans', arial, verdana, sans-serif; */
   font-family: 'Cascadia Code', sans-serif;
   background-image: url('../images/cosmic-bg-by-Vaynakh.jpg');
   background-size: cover;
@@ -69,11 +68,8 @@ input {
   width: 120px;
   color: #ff6;
   font-family: inherit;
-  /* padding: 10px 20px; */
   border: 2px solid transparent;
-  /* border-bottom: 1px solid white; */
   background-color: black;
-  /* border-radius: 33px; */
   font-size: 19px;
   transition: width 0.7s;
 }
@@ -83,12 +79,9 @@ button {
   height: 40px;
   color: rgba(255, 255, 255, 0.87);
   margin-top: 10px;
-  /* padding: 5px; */
   border: 1px solid white;
   font-family: inherit;
-  /* border-radius: 28px; */
   font-size: 20px;
-  /* text-transform: capitalize; */
   cursor: pointer;
   background-color: transparent;
   transition:
