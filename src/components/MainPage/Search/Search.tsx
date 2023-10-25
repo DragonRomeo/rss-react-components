@@ -54,7 +54,7 @@ export default class Search extends Component<Props, State> {
             name="key"
             id="key"
             type="text"
-            placeholder="enter a name"
+            placeholder="input here"
             value={this.state.value}
             onChange={this.handleChange}
           />
