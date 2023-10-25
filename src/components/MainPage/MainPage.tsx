@@ -24,9 +24,13 @@ class MainPage extends Component<Props, State> {
 
   render() {
     return (
-      <div className="mainPage">
-        <Search updateData={this.updateData} />
-        <Results data={this.state.search} />
+      <div className="pc">
+        <div className="pageWrapper">
+          <div className="mainPage">
+            <Search updateData={this.updateData} />
+            <Results data={this.state.search} />
+          </div>
+        </div>
       </div>
     );
   }

@@ -46,14 +46,19 @@ export default class Search extends Component<Props, State> {
   render() {
     return (
       <div className="searchContainer">
-        <input
-          name="key"
-          id="key"
-          type="text"
-          placeholder="enter a name"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
+        <p>hello, hunter-hacker.id.18135</p>
+        <p>write name here for found target</p>
+        <label>
+          targetName:
+          <input
+            name="key"
+            id="key"
+            type="text"
+            placeholder="enter a name"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
         <button onClick={this.handleClick}>search</button>
       </div>
     );
