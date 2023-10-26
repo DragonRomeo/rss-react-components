@@ -8,10 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepare": "yarn husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format:fix": "yarn prettier . --write",
-    "postinstall": "husky install"
+    "format:fix": "yarn prettier . --write"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.0.1",
@@ -32,7 +30,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "prettier": "^3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
