@@ -47,7 +47,7 @@ export default class Search extends Component<Props, State> {
     return (
       <div className="searchContainer">
         <p>hello, hunter-hacker.id.18135</p>
-        <p>write name here for found target</p>
+        <p>write a name here to search target</p>
         <label>
           targetName:
           <input
