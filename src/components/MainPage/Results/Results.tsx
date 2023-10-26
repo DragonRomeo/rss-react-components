@@ -108,11 +108,16 @@ export default class Results extends Component<Props, State> {
         return content;
       } else {
         return (
-          <ul>
+          <div className="itemContainer">
             {items.map((item) => (
-              <li key={item.name}>{`${item.name}, ${item.height}cm, ${item.gender}`}</li>
+              <ul key={item.name}>
+                <li>{`name: ${item.name}`}</li>
+                <li>{`height: ${item.height} cm`}</li>
+                <li>{`birth: ${item.birth_year}`}</li>
+                <li>{`gender: ${item.gender}`}</li>
+              </ul>
             ))}
-          </ul>
+          </div>
         );
       }
     }
