@@ -10,11 +10,13 @@
     "preview": "vite preview",
     "prepare": "yarn husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format:fix": "yarn prettier . --write"
+    "format:fix": "yarn prettier . --write",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.0.1",
     "i": "^0.3.7",
+    "lint-staged": "^15.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swapi-ts": "^1.0.1"
