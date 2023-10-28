@@ -2,7 +2,7 @@
   "name": "rss-react-components",
   "private": true,
   "version": "0.0.1",
-  "homepage": "https://gitname.github.io/react-gh-pages",
+  "homepage": "https://dragonromeo.github.io/rss-react-components",
   "type": "module",
   "scripts": {
     "dev": "vite",
