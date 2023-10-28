@@ -13,7 +13,7 @@
     "format:fix": "yarn prettier . --write",
     "prepare": "husky install",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.0.1",
