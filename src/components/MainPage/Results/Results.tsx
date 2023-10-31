@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 
 export interface People {
   name: string;
@@ -24,67 +25,42 @@ type Props = {
   data?: number;
 };
 
-type State = {
-  error: null | Error;
-  isLoaded: boolean;
-  items: Array<People>;
-};
+export const Results: FC<Props> = () => {
+  const [error, setError] = useState<null | Error>(null);
+  const [isLoad, setIsLoad] = useState(false);
+  const [items, setItems] = useState<Array<People>>([]);
+  const storageKey = localStorage.getItem('inputKey');
 
-export default class Results extends Component<Props, State> {
-  storageKey: string | null;
-  constructor(props: Props | Readonly<Props>) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: [],
+  useEffect(() => {
+    const getData = () => {
+      setIsLoad(false);
+      const url = storageKey
+        ? `https://swapi.dev/api/people/?search=${storageKey}`
+        : 'https://swapi.dev/api/people/';
+      fetch(url)
+        .then((response) => response.json())
+        .then(
+          (result) => {
+            setIsLoad(true);
+            setItems(result.results);
+          },
+          (error) => {
+            setIsLoad(true);
+            setError(error);
+          }
+        );
     };
-    this.storageKey = localStorage.getItem('inputKey');
-  }
+    getData();
+  }, [storageKey]);
 
-  getData = () => {
-    this.setState({ isLoaded: false });
-    const url = this.storageKey
-      ? `https://swapi.dev/api/people/?search=${this.storageKey}`
-      : 'https://swapi.dev/api/people/';
-    fetch(url)
-      .then((response) => response.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.results,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  };
-
-  componentDidMount(): void {
-    this.getData();
-  }
-
-  componentDidUpdate(prevProps: { data: number | undefined }): void {
-    if (this.props.data !== prevProps.data) {
-      this.storageKey = localStorage.getItem('inputKey');
-      this.getData();
-    }
-  }
-
-  render() {
-    const { error, isLoaded, items } = this.state;
+  const resultContent = () => {
     if (error) {
       return <p className="status">Error: {error.message}</p>;
-    } else if (!isLoaded) {
+    } else if (!isLoad) {
       return <p className="status">Loading...</p>;
     } else {
-      if (this.storageKey !== null) {
-        const trail = this.storageKey.trim().toLowerCase();
+      if (storageKey !== null) {
+        const trail = storageKey.trim().toLowerCase();
         const results = items.filter((item) => item.name.toLowerCase().includes(trail));
 
         const content =
@@ -121,5 +97,7 @@ export default class Results extends Component<Props, State> {
         );
       }
     }
-  }
-}
+  };
+
+  return resultContent();
+};

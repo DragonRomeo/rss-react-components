@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Search } from './Search/Search';
-import Results from './Results/Results';
+import { Results } from './Results/Results';
 import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 
 type Props = {
