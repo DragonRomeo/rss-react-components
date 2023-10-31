@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import MainPage from '../MainPage/MainPage';
+import { MainPage } from '../MainPage/MainPage';
 
 type Props = {
   children?: JSX.Element;

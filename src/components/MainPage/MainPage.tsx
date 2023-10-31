@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 import { Search } from './Search/Search';
 import { Results } from './Results/Results';
 import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
@@ -7,35 +8,22 @@ type Props = {
   children?: JSX.Element;
 };
 
-type State = {
-  search: number;
-};
+export const MainPage: FC<Props> = () => {
+  const [search, setSearch] = useState(0);
 
-class MainPage extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      search: 0,
-    };
-  }
-
-  updateData = (value: number) => {
-    this.setState({ search: value });
+  const updateData = (value: number) => {
+    setSearch(value);
   };
 
-  render() {
-    return (
-      <div className="pc">
-        <div className="pageWrapper">
-          <div className="mainPage">
-            <Search updateData={this.updateData} />
-            <Results data={this.state.search} />
-          </div>
+  return (
+    <div className="pc">
+      <div className="pageWrapper">
+        <div className="mainPage">
+          <Search updateData={updateData} />
+          <Results data={search} />
         </div>
-        <ErrorBtn></ErrorBtn>
       </div>
-    );
-  }
-}
-
-export default MainPage;
+      <ErrorBtn></ErrorBtn>
+    </div>
+  );
+};
