@@ -1,0 +1,159 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+@import url('https://fonts.cdnfonts.com/css/cascadia-code');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cascadia Code', sans-serif;
+  background-image: url('../images/cosmic-bg-by-Vaynakh.jpg');
+  background-size: cover;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.pc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../images/vecteezy_old-vintage-pc-clipart-design-illustration_9385553_678.png');
+  background-size: cover;
+  width: 1250px;
+  height: 100vh;
+}
+
+.pageWrapper {
+  padding-top: 72px;
+  width: 35%;
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: black;
+  height: 406px;
+  padding-left: 20px;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+  min-height: 14vh;
+  padding-top: 10px;
+}
+
+.resultsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  min-height: 50vh;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  gap: 1rem;
+  background-color: rgba(9, 1, 15, 0.3);
+  width: 100%;
+  border: 1px solid transparent;
+  overflow-y: scroll;
+  margin-top: 10px;
+}
+
+input {
+  width: 120px;
+  color: #ff6;
+  font-family: inherit;
+  border: 2px solid transparent;
+  background-color: black;
+  font-size: 19px;
+  transition: width 0.7s;
+}
+
+.buttonSearch {
+  width: 93px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.87);
+  margin-top: 10px;
+  border: 1px solid white;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition:
+    background 0.5s,
+    color 0.5s;
+}
+
+.buttonSearch:hover {
+  background-color: white;
+  color: black;
+}
+
+.status {
+  font-size: 30px;
+}
+
+ul {
+  font-size: 18px;
+}
+
+li {
+  list-style-type: none;
+  font-weight: 700;
+  color: #ff6;
+}
+
+.errorBtnWrapper {
+  margin-top: 240px;
+  width: 711px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 12px;
+  align-items: center;
+}
+
+.errBtn {
+  width: 27px;
+  height: 27px;
+  border: 3px solid black;
+  border-radius: 25px;
+  transition: transform 0.5s;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.errBtn:hover {
+  transform: scale(0.8);
+}
+
+.errorBtnTooltip {
+  color: black;
+  font-size: 19px;
+  border: 1px solid transparent;
+  padding: 5px;
+  background-color: yellow;
+}
