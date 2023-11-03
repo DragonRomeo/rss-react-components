@@ -50,14 +50,22 @@ export const Results: FC<Props> = () => {
 
   const resultContent = () => {
     const mapContent = (
-      <div className="itemContainer">
-        {items.map((item) => (
-          <ul key={item.id}>
-            <li>{`title: ${item.title}`}</li>
-            <li>{`brand: ${item.brand}`}</li>
-            <li>{`price: ${item.price} $`}</li>
-          </ul>
-        ))}
+      <div className="itemBigContainer">
+        <div className="itemWrapper">
+          <div className="itemContainer">
+            {items.map((item) => (
+              <ul key={item.id}>
+                <li>{`title: ${item.title}`}</li>
+                <li>{`brand: ${item.brand}`}</li>
+                <li>{`price: ${item.price} $`}</li>
+              </ul>
+            ))}
+          </div>
+          <div className="btnContainer">
+            <button className="pageBtn">1</button>
+            <button className="pageBtn">2</button>
+          </div>
+        </div>
       </div>
     );
 
