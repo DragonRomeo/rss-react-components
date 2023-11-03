@@ -1,23 +1,18 @@
 import { useEffect, useState } from 'react';
 import type { FC } from 'react';
 
-export interface People {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: Array<string>;
-  starships: Array<string>;
-  created: string;
-  edited: string;
-  url: string;
+export interface Products {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
 }
 
 type Props = {
@@ -28,21 +23,21 @@ type Props = {
 export const Results: FC<Props> = () => {
   const [error, setError] = useState<null | Error>(null);
   const [isLoad, setIsLoad] = useState(false);
-  const [items, setItems] = useState<Array<People>>([]);
+  const [items, setItems] = useState<Array<Products>>([]);
   const storageKey = localStorage.getItem('inputKey');
 
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
       const url = storageKey
-        ? `https://swapi.dev/api/people/?search=${storageKey}`
-        : 'https://swapi.dev/api/people/';
+        ? `https://dummyjson.com/products/search?q=${storageKey}`
+        : 'https://dummyjson.com/products';
       fetch(url)
         .then((response) => response.json())
         .then(
           (result) => {
             setIsLoad(true);
-            setItems(result.results);
+            setItems(result.products);
           },
           (error) => {
             setIsLoad(true);
@@ -54,6 +49,18 @@ export const Results: FC<Props> = () => {
   }, [storageKey]);
 
   const resultContent = () => {
+    const mapContent = (
+      <div className="itemContainer">
+        {items.map((item) => (
+          <ul key={item.id}>
+            <li>{`title: ${item.title}`}</li>
+            <li>{`brand: ${item.brand}`}</li>
+            <li>{`price: ${item.price} $`}</li>
+          </ul>
+        ))}
+      </div>
+    );
+
     if (error) {
       return <p className="status">Error: {error.message}</p>;
     } else if (!isLoad) {
@@ -61,40 +68,13 @@ export const Results: FC<Props> = () => {
     } else {
       if (storageKey !== null) {
         const trail = storageKey.trim().toLowerCase();
-        const results = items.filter((item) => item.name.toLowerCase().includes(trail));
+        const results = items.filter((item) => item.title.toLowerCase().includes(trail));
 
-        const content =
-          results.length > 0 ? (
-            <div className="itemContainer">
-              {results.map((item) => {
-                return (
-                  <ul key={item.name}>
-                    <li>{`name: ${item.name}`}</li>
-                    <li>{`height: ${item.height} cm`}</li>
-                    <li>{`birth: ${item.birth_year}`}</li>
-                    <li>{`gender: ${item.gender}`}</li>
-                  </ul>
-                );
-              })}
-            </div>
-          ) : (
-            <>Nothing found</>
-          );
+        const content = results.length > 0 ? mapContent : <>Nothing found</>;
 
         return content;
       } else {
-        return (
-          <div className="itemContainer">
-            {items.map((item) => (
-              <ul key={item.name}>
-                <li>{`name: ${item.name}`}</li>
-                <li>{`height: ${item.height} cm`}</li>
-                <li>{`birth: ${item.birth_year}`}</li>
-                <li>{`gender: ${item.gender}`}</li>
-              </ul>
-            ))}
-          </div>
-        );
+        return mapContent;
       }
     }
   };
