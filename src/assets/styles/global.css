@@ -89,19 +89,18 @@ h1 {
   height: 100%;
   border: 1px solid transparent;
   overflow-y: scroll;
-  margin-top: 10px;
 }
 
 .btnContainer {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin-top: 10px;
 }
 
 .pageBtn {
   width: 28px;
   height: 28px;
+  margin-top: 5px;
   font-family: inherit;
   font-size: 21px;
   border: 2px solid white;

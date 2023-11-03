@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -10,11 +10,16 @@ export const Search: FC<Props> = ({ updateData }) => {
   let inputValue = '';
   const [value, setValue] = useState('');
   const [search, setSearch] = useState(1);
+  const [numPage, setNumPage] = useState('10');
 
   const handleChange = (event: { target: { value: string } }) => {
     setValue(event.target.value);
     inputValue = event.target.value;
     localStorage.setItem('inputKey', inputValue);
+  };
+
+  const handleChange2 = (event: { target: { value: SetStateAction<string> } }) => {
+    setNumPage(event.target.value);
   };
 
   const handleClick = () => {
@@ -45,6 +50,17 @@ export const Search: FC<Props> = ({ updateData }) => {
           placeholder="input here"
           value={value}
           onChange={handleChange}
+        />
+      </label>
+      <label>
+        inputPerPage:
+        <input
+          name="key"
+          id="key"
+          type="number"
+          placeholder="put numb"
+          value={numPage}
+          onChange={handleChange2}
         />
       </label>
       <button className="buttonSearch" onClick={handleClick}>
