@@ -7,7 +7,7 @@ export const Pagination = ({ updateData }) => {
     const eValue = event.target.innerText;
     updateData(eValue);
     console.log(eValue);
-    // return navigate(`results?page=${eValue}`);
+    return navigate(`/rss-react-components/results?page=${eValue}`);
   };
 
   //TODO: кол-во кнопок должно зависеть от того, сколько в итоге получится страниц.

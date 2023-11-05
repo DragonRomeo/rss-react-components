@@ -14,6 +14,7 @@ export const App = () => {
 
           <Route path="/rss-react-components/results" element={<Results />}>
             <Route path="/rss-react-components/results/:id" element={<SinglePage />} />
+            <Route path="/rss-react-components/results?page=" element={<SinglePage />} />
           </Route>
 
           <Route path="/rss-react-components*" element={<NotFoundPage />} />
