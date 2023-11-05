@@ -13,8 +13,11 @@ type Props = {
 export const MainPage: FC<Props> = () => {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState('1');
+  const [perPage, setPerPage] = useState('10');
+
   console.log(`page =${page}`);
   console.log(`search =${search}`);
+  console.log(`perPage =${perPage}`);
 
   //TODO: Отправить Search & Page через один context.
 
@@ -26,12 +29,16 @@ export const MainPage: FC<Props> = () => {
     setPage(value);
   };
 
+  const updateDate3 = (value: string) => {
+    setPerPage(value);
+  };
+
   return (
     <div className="pc">
       <div className="pageWrapper">
         <div className="mainPage">
-          <Context.Provider value={{ search, page }}>
-            <Search updateData={updateData} />
+          <Context.Provider value={{ search, page, perPage }}>
+            <Search updateData={updateData} updateData3={updateDate3} />
             <Outlet></Outlet>
             <Pagination updateData={updateData2} />
           </Context.Provider>

@@ -1,15 +1,15 @@
-import type { FC, SetStateAction } from 'react';
+import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
 type Props = {
   children?: JSX.Element;
   updateData: (value: string) => void;
+  updateData3: (value: string) => void;
 };
 
-export const Search: FC<Props> = ({ updateData }) => {
+export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   let inputValue = '';
   const [value, setValue] = useState('');
-  // const [search, setSearch] = useState(1);
   const [numPage, setNumPage] = useState('10');
 
   const handleChange = (event: { target: { value: string } }) => {
@@ -18,13 +18,13 @@ export const Search: FC<Props> = ({ updateData }) => {
     localStorage.setItem('inputKey', inputValue);
   };
 
-  const handleChange2 = (event: { target: { value: SetStateAction<string> } }) => {
+  const handleChange2 = (event: { target: { value: string } }) => {
     setNumPage(event.target.value);
+    updateData3(event.target.value);
   };
 
   const handleClick = () => {
     updateData(value);
-    // setSearch(value);
   };
 
   useEffect(() => {

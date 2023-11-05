@@ -26,20 +26,27 @@ export const Results: FC<Props> = () => {
   const [isLoad, setIsLoad] = useState(false);
   const [items, setItems] = useState<Array<Products>>([]);
   const storageKey = localStorage.getItem('inputKey');
-  const { search, page } = useContext(Context);
-  console.log(`search =${search}`);
+
+  const { search, page, perPage } = useContext(Context);
+  console.log(search);
+  //search это 2 айтема
+  //TODO: При первом рендере нет данных о количестве страниц и о слове поиска
+
   console.log(`page = ${page}`);
+  // let value = 10;
+  let skipValue = 10;
 
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
       const url = storageKey
         ? `https://dummyjson.com/products/search?q=${storageKey}`
-        : 'https://dummyjson.com/products';
+        : `https://dummyjson.com/products?limit=${perPage}&skip=${skipValue}`;
       fetch(url)
         .then((response) => response.json())
         .then(
           (result) => {
+            console.log(result.products);
             setIsLoad(true);
             setItems(result.products);
           },
@@ -50,7 +57,7 @@ export const Results: FC<Props> = () => {
         );
     };
     getData();
-  }, [storageKey, search]);
+  }, [storageKey, search, perPage]);
 
   const resultContent = () => {
     const mapContent = (
