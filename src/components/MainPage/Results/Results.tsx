@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import type { FC } from 'react';
+import { Context } from '../../../providers/context';
 
 export interface Products {
   id: number;
@@ -25,6 +26,8 @@ export const Results: FC<Props> = () => {
   const [isLoad, setIsLoad] = useState(false);
   const [items, setItems] = useState<Array<Products>>([]);
   const storageKey = localStorage.getItem('inputKey');
+  const { search, page } = useContext(Context);
+  console.log(`search =${search}`);
 
   useEffect(() => {
     const getData = () => {
@@ -46,7 +49,7 @@ export const Results: FC<Props> = () => {
         );
     };
     getData();
-  }, [storageKey]);
+  }, [storageKey, search]);
 
   const resultContent = () => {
     const mapContent = (

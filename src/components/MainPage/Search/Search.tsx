@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 
 type Props = {
   children?: JSX.Element;
-  updateData: (value: number) => void;
+  updateData: (value: string) => void;
 };
 
 export const Search: FC<Props> = ({ updateData }) => {
   let inputValue = '';
   const [value, setValue] = useState('');
-  const [search, setSearch] = useState(1);
+  // const [search, setSearch] = useState(1);
   const [numPage, setNumPage] = useState('10');
 
   const handleChange = (event: { target: { value: string } }) => {
@@ -23,10 +23,8 @@ export const Search: FC<Props> = ({ updateData }) => {
   };
 
   const handleClick = () => {
-    updateData(search);
-    setSearch((prevState) => {
-      return prevState + 1;
-    });
+    updateData(value);
+    // setSearch(value);
   };
 
   useEffect(() => {
