@@ -29,11 +29,9 @@ export const Results: FC<Props> = () => {
 
   const { search, page, perPage } = useContext(Context);
   console.log(search);
-  //search это 2 айтема
-  //TODO: При первом рендере нет данных о количестве страниц и о слове поиска
 
   console.log(`page = ${page}`);
-  let skipValue = perPage ? +perPage * +page - perPage : 0;
+  const skipValue = perPage ? +perPage * +page - perPage : 0;
   console.log(`perPage = ${perPage}, skipValue=${skipValue}`);
 
   useEffect(() => {

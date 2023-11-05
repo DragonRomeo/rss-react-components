@@ -19,8 +19,6 @@ export const MainPage: FC<Props> = () => {
   console.log(`search =${search}`);
   console.log(`perPage =${perPage}`);
 
-  //TODO: Отправить Search & Page через один context.
-
   const updateData = (value: string) => {
     setSearch(value);
   };
