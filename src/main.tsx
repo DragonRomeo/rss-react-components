@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import './assets/styles/global.css';
 import { App } from './routes/App';
-
-const router = createBrowserRouter([
-  {
-    path: '/rss-react-components/',
-    element: <App />,
-  },
-]);
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
