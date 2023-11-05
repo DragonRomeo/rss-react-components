@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import type { FC } from 'react';
 import { Context } from '../../../providers/context';
+import { Link, Outlet } from 'react-router-dom';
 
 export interface Products {
   id: number;
@@ -64,17 +65,14 @@ export const Results: FC<Props> = () => {
         <div className="itemWrapper">
           <div className="itemContainer">
             {items.map((item) => (
-              <ul key={item.id}>
+              <Link key={item.id} to={`/rss-react-components/results/${item.id}`}>
                 <li>{`title: ${item.title}`}</li>
                 <li>{`brand: ${item.brand}`}</li>
                 <li>{`price: ${item.price} $`}</li>
-              </ul>
+              </Link>
             ))}
           </div>
-          <div className="btnContainer">
-            <button className="pageBtn">1</button>
-            <button className="pageBtn">2</button>
-          </div>
+          <Outlet />
         </div>
       </div>
     );
