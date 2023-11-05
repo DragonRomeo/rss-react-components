@@ -1,3 +1,3 @@
 export const NotFoundPage = () => {
-  return <div>Error!!!!!!!!! Nothing found!!!!!</div>;
+  return <div>Wrong URL, something trouble with react router. Maybe u write wrong URL?</div>;
 };
