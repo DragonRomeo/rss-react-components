@@ -34,14 +34,14 @@ export const Results: FC<Props> = () => {
 
   console.log(`page = ${page}`);
   let skipValue = perPage ? +perPage * +page - perPage : 0;
-  console.log(`skipValue =${skipValue}`);
+  console.log(`perPage = ${perPage}, skipValue=${skipValue}`);
 
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
       //TODO: понять как делать поиск и пагинацию в доках по апишке
       const url = storageKey
-        ? `https://dummyjson.com/products/search?q=${storageKey}&limit=${perPage}`
+        ? `https://dummyjson.com/products/search?q=${storageKey}&limit=${perPage}&skip=${skipValue}`
         : `https://dummyjson.com/products?limit=${perPage}&skip=${skipValue}`;
       fetch(url)
         .then((response) => response.json())
