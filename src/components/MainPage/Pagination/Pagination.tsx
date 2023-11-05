@@ -1,15 +1,20 @@
-import { useContext } from 'react';
+import { useContext, MouseEvent, FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../../providers/context';
 
-export const Pagination = ({ updateData }) => {
+interface Props {
+  updateData: (value: string) => void;
+}
+export const Pagination: FC<Props> = ({ updateData }) => {
   const navigate = useNavigate();
-  const maxItems = 100;
-  const { perPage } = useContext(Context);
-  const numberOfPage = Math.ceil(maxItems / +perPage);
+  const { perPage, total } = useContext(Context);
+  const numberOfPage = Math.ceil(total / +perPage);
   const arrPage = new Array(numberOfPage).fill(0);
 
-  const handleClick = (event) => {
+  const handleClick = (event: MouseEvent) => {
+    if (!(event.target instanceof HTMLElement)) {
+      return;
+    }
     const eValue = event.target.innerText;
     updateData(eValue);
     return navigate(`/rss-react-components/results?page=${eValue}`);
@@ -18,7 +23,7 @@ export const Pagination = ({ updateData }) => {
   return (
     <div className="pagination">
       {arrPage.map((item, index) => (
-        <button key={index} className="pageBtn" onClick={(e) => handleClick(e)}>
+        <button key={index} className="pageBtn" onClick={handleClick}>
           {index + 1}
         </button>
       ))}

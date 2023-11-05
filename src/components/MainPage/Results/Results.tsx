@@ -23,36 +23,8 @@ type Props = {
 };
 
 export const Results: FC<Props> = () => {
-  const [error, setError] = useState<null | Error>(null);
-  const [isLoad, setIsLoad] = useState(false);
-  const [items, setItems] = useState<Array<Products>>([]);
   const storageKey = localStorage.getItem('inputKey');
-
-  const { search, page, perPage } = useContext(Context);
-
-  const skipValue = perPage ? +perPage * +page - perPage : 0;
-
-  useEffect(() => {
-    const getData = () => {
-      setIsLoad(false);
-      const url = storageKey
-        ? `https://dummyjson.com/products/search?q=${storageKey}&limit=${perPage}&skip=${skipValue}`
-        : `https://dummyjson.com/products?limit=${perPage}&skip=${skipValue}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then(
-          (result) => {
-            setIsLoad(true);
-            setItems(result.products);
-          },
-          (error) => {
-            setIsLoad(true);
-            setError(error);
-          }
-        );
-    };
-    getData();
-  }, [storageKey, search, perPage, skipValue]);
+  const { items, error, isLoad } = useContext(Context);
 
   const resultContent = () => {
     const mapContent = (
