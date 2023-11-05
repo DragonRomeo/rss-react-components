@@ -1,13 +1,13 @@
-import { useContext, MouseEvent, FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Context } from '../../../providers/context';
+import { useDataContext } from '../../../providers/context';
 
 interface Props {
   updateData: (value: string) => void;
 }
 export const Pagination: FC<Props> = ({ updateData }) => {
   const navigate = useNavigate();
-  const { perPage, total } = useContext(Context);
+  const { perPage, total } = useDataContext();
   const numberOfPage = Math.ceil(total / +perPage);
   const arrPage = new Array(numberOfPage).fill(0);
 

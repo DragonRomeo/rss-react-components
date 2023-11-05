@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 type Props = {
   children?: JSX.Element;
@@ -12,7 +11,6 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   let inputValue = '';
   const [value, setValue] = useState('');
   const [numPage, setNumPage] = useState('10');
-  const navigate = useNavigate();
 
   const handleChange = (event: { target: { value: string } }) => {
     setValue(event.target.value);

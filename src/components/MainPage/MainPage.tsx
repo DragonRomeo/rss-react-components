@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
 import type { FC } from 'react';
-import { Search } from './Search/Search';
-import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { DataContext } from '../../providers/context';
+import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 import { Pagination } from './Pagination/Pagination';
-import { Context } from '../../providers/context';
+import { Search } from './Search/Search';
+import { Products } from './Results/Results';
 
 type Props = {
   children?: JSX.Element;
@@ -77,11 +78,11 @@ export const MainPage: FC<Props> = () => {
     <div className="pc">
       <div className="pageWrapper">
         <div className="mainPage">
-          <Context.Provider value={{ search, page, perPage, items, error, isLoad, total }}>
+          <DataContext.Provider value={{ search, page, perPage, items, error, isLoad, total }}>
             <Search updateData={updateData} updateData3={updateDate3} />
             <Outlet></Outlet>
             <Pagination updateData={updateData2} />
-          </Context.Provider>
+          </DataContext.Provider>
         </div>
       </div>
       <ErrorBtn></ErrorBtn>

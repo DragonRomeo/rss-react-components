@@ -1,10 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Products } from '../components/MainPage/Results/Results';
 
 export const SinglePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<Products | null>(null);
 
   const handleClick = () => {
     navigate('..');

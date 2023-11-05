@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from 'react';
 import type { FC } from 'react';
-import { Context } from '../../../providers/context';
 import { Link, Outlet } from 'react-router-dom';
+import { useDataContext } from '../../../providers/context';
 
 export interface Products {
   id: number;
@@ -24,7 +23,7 @@ type Props = {
 
 export const Results: FC<Props> = () => {
   const storageKey = localStorage.getItem('inputKey');
-  const { items, error, isLoad } = useContext(Context);
+  const { items, error, isLoad } = useDataContext();
 
   const resultContent = () => {
     const mapContent = (
