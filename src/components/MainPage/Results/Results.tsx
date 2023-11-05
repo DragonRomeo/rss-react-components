@@ -29,16 +29,12 @@ export const Results: FC<Props> = () => {
   const storageKey = localStorage.getItem('inputKey');
 
   const { search, page, perPage } = useContext(Context);
-  console.log(search);
 
-  console.log(`page = ${page}`);
   const skipValue = perPage ? +perPage * +page - perPage : 0;
-  console.log(`perPage = ${perPage}, skipValue=${skipValue}`);
 
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
-      //TODO: понять как делать поиск и пагинацию в доках по апишке
       const url = storageKey
         ? `https://dummyjson.com/products/search?q=${storageKey}&limit=${perPage}&skip=${skipValue}`
         : `https://dummyjson.com/products?limit=${perPage}&skip=${skipValue}`;
@@ -46,7 +42,6 @@ export const Results: FC<Props> = () => {
         .then((response) => response.json())
         .then(
           (result) => {
-            console.log(result.products);
             setIsLoad(true);
             setItems(result.products);
           },

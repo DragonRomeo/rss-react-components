@@ -12,12 +12,8 @@ export const Pagination = ({ updateData }) => {
   const handleClick = (event) => {
     const eValue = event.target.innerText;
     updateData(eValue);
-    console.log(eValue);
     return navigate(`/rss-react-components/results?page=${eValue}`);
   };
-
-  //TODO: кол-во кнопок должно зависеть от того, сколько в итоге получится страниц.
-  //TODO: общее кол-во элементов / кол-во айтемов на странице = кол-во кнопок
 
   return (
     <div className="pagination">
@@ -26,18 +22,6 @@ export const Pagination = ({ updateData }) => {
           {index + 1}
         </button>
       ))}
-      {/* <button className="pageBtn" onClick={(e) => handleClick(e)}>
-        1
-      </button>
-      <button className="pageBtn" onClick={(e) => handleClick(e)}>
-        2
-      </button>
-      <button className="pageBtn" onClick={(e) => handleClick(e)}>
-        3
-      </button>
-      <button className="pageBtn" onClick={(e) => handleClick(e)}>
-        4
-      </button> */}
     </div>
   );
 };

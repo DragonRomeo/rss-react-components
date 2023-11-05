@@ -179,10 +179,13 @@ li {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  overflow-y: scroll;
+  width: 100%;
 }
 
 .pageBtn {
   width: 25px;
+  min-width: 25px;
   height: 30px;
   color: rgba(255, 255, 255, 0.87);
   margin-top: 10px;

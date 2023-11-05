@@ -1,4 +1,4 @@
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export const SinglePage = () => {
@@ -6,7 +6,7 @@ export const SinglePage = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = () => {
     navigate('..');
   };
 

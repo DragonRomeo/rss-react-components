@@ -15,10 +15,6 @@ export const MainPage: FC<Props> = () => {
   const [page, setPage] = useState('1');
   const [perPage, setPerPage] = useState('10');
 
-  console.log(`page =${page}`);
-  console.log(`search =${search}`);
-  console.log(`perPage =${perPage}`);
-
   const updateData = (value: string) => {
     setSearch(value);
   };
