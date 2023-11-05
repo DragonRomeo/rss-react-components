@@ -6,7 +6,7 @@ export const Pagination = ({ updateData }) => {
   const navigate = useNavigate();
   const maxItems = 100;
   const { perPage } = useContext(Context);
-  const numberOfPage = maxItems / +perPage;
+  const numberOfPage = Math.ceil(maxItems / +perPage);
   const arrPage = new Array(numberOfPage).fill(0);
 
   const handleClick = (event) => {
