@@ -97,17 +97,6 @@ h1 {
   gap: 10px;
 }
 
-.pageBtn {
-  width: 28px;
-  height: 28px;
-  margin-top: 5px;
-  font-family: inherit;
-  font-size: 21px;
-  border: 2px solid white;
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0.87);
-}
-
 input {
   width: 120px;
   color: #ff6;
@@ -182,4 +171,30 @@ li {
   border: 1px solid transparent;
   padding: 5px;
   background-color: yellow;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.pageBtn {
+  width: 25px;
+  height: 30px;
+  color: rgba(255, 255, 255, 0.87);
+  margin-top: 10px;
+  border: 1px solid white;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition:
+    background 0.5s,
+    color 0.5s;
+}
+
+.pageBtn:hover {
+  background-color: white;
+  color: black;
 }

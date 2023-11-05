@@ -10,7 +10,7 @@ export const App = () => {
         <Route path="/rss-react-components" element={<ErrorBoundary />}>
           <Route index element={<HomePage />}></Route>
 
-          {/* <Route path="/rss-react-components/results" element={Results}></Route> */}
+          <Route path="/rss-react-components/results" element={<Results />}></Route>
         </Route>
       </Routes>
     </>
