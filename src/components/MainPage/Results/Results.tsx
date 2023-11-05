@@ -28,6 +28,7 @@ export const Results: FC<Props> = () => {
   const storageKey = localStorage.getItem('inputKey');
   const { search, page } = useContext(Context);
   console.log(`search =${search}`);
+  console.log(`page = ${page}`);
 
   useEffect(() => {
     const getData = () => {

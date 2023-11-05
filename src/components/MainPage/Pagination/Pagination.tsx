@@ -4,7 +4,7 @@ export const Pagination = ({ updateData }) => {
   const navigate = useNavigate();
 
   const handleClick = (event) => {
-    const eValue = event.target.text;
+    const eValue = event.target.innerText;
     updateData(eValue);
     console.log(eValue);
     // return navigate(`results?page=${eValue}`);
