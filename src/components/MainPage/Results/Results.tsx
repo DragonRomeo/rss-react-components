@@ -33,8 +33,8 @@ export const Results: FC<Props> = () => {
   //TODO: При первом рендере нет данных о количестве страниц и о слове поиска
 
   console.log(`page = ${page}`);
-  // let value = 10;
-  let skipValue = 10;
+  let skipValue = perPage ? +perPage * +page - perPage : 0;
+  console.log(`skipValue =${skipValue}`);
 
   useEffect(() => {
     const getData = () => {
@@ -58,7 +58,7 @@ export const Results: FC<Props> = () => {
         );
     };
     getData();
-  }, [storageKey, search, perPage]);
+  }, [storageKey, search, perPage, skipValue]);
 
   const resultContent = () => {
     const mapContent = (
