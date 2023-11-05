@@ -1,11 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export const SinglePage = () => {
   const { id } = useParams();
-  console.log(`id = ${id}`);
+  const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  console.log(`singlePage родился`)
+
+  const handleClick = (e: MouseEvent) => {
+    navigate('..');
+  };
 
   useEffect(() => {
     const url = `https://dummyjson.com/products/${id}`;
@@ -20,7 +23,7 @@ export const SinglePage = () => {
   }, [id]);
 
   return (
-    <div className='postInfo'>
+    <div className="postInfo" onClick={handleClick}>
       {post && (
         <>
           <h3>{post.title}</h3>
