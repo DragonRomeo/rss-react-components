@@ -39,8 +39,9 @@ export const Results: FC<Props> = () => {
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
+      //TODO: понять как делать поиск и пагинацию в доках по апишке
       const url = storageKey
-        ? `https://dummyjson.com/products/search?q=${storageKey}`
+        ? `https://dummyjson.com/products/search?q=${storageKey}&limit=${perPage}`
         : `https://dummyjson.com/products?limit=${perPage}&skip=${skipValue}`;
       fetch(url)
         .then((response) => response.json())
