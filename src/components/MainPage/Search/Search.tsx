@@ -9,7 +9,7 @@ type Props = {
 
 export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   let inputValue = '';
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(''); //Нужно передать Value в Redux?
   const [numPage, setNumPage] = useState('10');
 
   const handleChange = (event: { target: { value: string } }) => {
