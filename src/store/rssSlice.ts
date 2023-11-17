@@ -11,8 +11,9 @@ const rssSlice = createSlice({
       console.log(action);
 
       state.rss.push({
-        inputValue: action.payload.value,
+        text: action.payload,
       });
+      console.log(state.rss);
     },
   },
 });

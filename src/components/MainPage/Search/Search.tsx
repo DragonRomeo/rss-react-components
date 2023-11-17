@@ -15,7 +15,7 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   const [numPage, setNumPage] = useState('10');
 
   const dispatch = useDispatch();
-  const runDispath = () => dispatch(addInputValue({ value }));
+  const runDispath = () => dispatch(addInputValue(value));
 
   const handleChange = (event: { target: { value: string } }) => {
     setValue(event.target.value);

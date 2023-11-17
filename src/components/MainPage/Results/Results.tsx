@@ -23,9 +23,9 @@ type Props = {
 };
 
 export const Results: FC<Props> = () => {
-  const reduxData = useSelector((state) => {
-    state.rss;
-  });
+  const [text] = useSelector((state) => state.data.rss);
+  console.log(text);
+  // console.log('render');
 
   const storageKey = localStorage.getItem('inputKey');
   const { items, error, isLoad } = useDataContext();
@@ -40,6 +40,7 @@ export const Results: FC<Props> = () => {
                 <li>{`title: ${item.title}`}</li>
                 <li>{`brand: ${item.brand}`}</li>
                 <li>{`price: ${item.price} $`}</li>
+                {/* <li>{text ? text.text : 'empty'}</li> */}
               </Link>
             ))}
           </div>
