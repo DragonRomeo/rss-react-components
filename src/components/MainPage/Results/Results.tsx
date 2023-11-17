@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useDataContext } from '../../../providers/context';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 export interface Products {
   id: number;
@@ -22,6 +23,10 @@ type Props = {
 };
 
 export const Results: FC<Props> = () => {
+  const reduxData = useSelector((state) => {
+    state.rss;
+  });
+
   const storageKey = localStorage.getItem('inputKey');
   const { items, error, isLoad } = useDataContext();
 

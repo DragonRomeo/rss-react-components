@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux/es/exports';
+import { addInputValue } from '../../../store/rssSlice';
 
 type Props = {
   children?: JSX.Element;
@@ -12,10 +14,14 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   const [value, setValue] = useState(''); //Нужно передать Value в Redux?
   const [numPage, setNumPage] = useState('10');
 
+  const dispatch = useDispatch();
+  const runDispath = () => dispatch(addInputValue(value));
+
   const handleChange = (event: { target: { value: string } }) => {
     setValue(event.target.value);
     inputValue = event.target.value;
     localStorage.setItem('inputKey', inputValue);
+    runDispath();
   };
 
   const handleChange2 = (event: { target: { value: string } }) => {
