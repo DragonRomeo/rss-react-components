@@ -2,10 +2,10 @@ import { createContext, useContext } from 'react';
 import { Products } from '../components/MainPage/Results/Results';
 
 export interface IContext {
-  search: string;
+  search?: string;
   page: string;
   perPage: string;
-  items: Array<Products>;
+  items?: Array<Products>;
   error: Error | null;
   isLoad: boolean;
   total: number;

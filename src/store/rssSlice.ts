@@ -15,9 +15,18 @@ const rssSlice = createSlice({
       });
       console.log(state.rss);
     },
+    addApiData(state, action) {
+      console.log(state);
+      console.log(action);
+
+      state.rss.push({
+        items2: action ? action.payload : [],
+      });
+    },
   },
 });
 
 export const { addInputValue } = rssSlice.actions;
+export const { addApiData } = rssSlice.actions;
 
 export default rssSlice.reducer;

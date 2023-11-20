@@ -6,6 +6,8 @@ import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 import { Pagination } from './Pagination/Pagination';
 import { Search } from './Search/Search';
 import { Products } from './Results/Results';
+import { useDispatch } from 'react-redux';
+import { addApiData } from '../../store/rssSlice';
 
 type Props = {
   children?: JSX.Element;
@@ -24,11 +26,10 @@ export const MainPage: FC<Props> = () => {
   const [items, setItems] = useState<Array<Products>>([]);
   const [total, setTotal] = useState(0);
 
+  const dispatch = useDispatch();
+  const itemsDispatch = (items) => dispatch(addApiData(items));
   const storageKey = localStorage.getItem('inputKey');
   const skipValue = perPage ? +perPage * +page - +perPage : 0;
-  // console.log(`expression = ${+perPage * +page - +perPage}`);
-  // console.log(`perPage = ${perPage}`);
-  // console.log(`skip = ${skipValue}`);
 
   useEffect(() => {
     const getData = () => {
@@ -58,6 +59,7 @@ export const MainPage: FC<Props> = () => {
             console.log(result);
             setItems(result.products);
             setTotal(+result.total);
+            itemsDispatch(result.products);
           },
           (error) => {
             console.log(error);
