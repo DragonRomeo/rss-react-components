@@ -26,11 +26,15 @@ export const MainPage: FC<Props> = () => {
 
   const storageKey = localStorage.getItem('inputKey');
   const skipValue = perPage ? +perPage * +page - +perPage : 0;
+  // console.log(`expression = ${+perPage * +page - +perPage}`);
+  // console.log(`perPage = ${perPage}`);
+  // console.log(`skip = ${skipValue}`);
 
   useEffect(() => {
     const getData = () => {
       setIsLoad(false);
       let url: string;
+
       if (storageKey) {
         const newURL = new URL(searchUrl);
         newURL.searchParams.append('q', storageKey);
@@ -38,6 +42,7 @@ export const MainPage: FC<Props> = () => {
         newURL.searchParams.append('skip', skipValue.toString());
 
         url = newURL.href;
+        console.log(url);
       } else {
         const newURL = new URL(mainUrl);
         newURL.searchParams.append('limit', perPage);
@@ -50,10 +55,12 @@ export const MainPage: FC<Props> = () => {
         .then((response) => response.json())
         .then(
           (result) => {
+            console.log(result);
             setItems(result.products);
             setTotal(+result.total);
           },
           (error) => {
+            console.log(error);
             setError(error);
           }
         )
@@ -78,7 +85,7 @@ export const MainPage: FC<Props> = () => {
     <div className="pc">
       <div className="pageWrapper">
         <div className="mainPage">
-          <DataContext.Provider value={{ search, page, perPage, items, error, isLoad, total }}>
+          <DataContext.Provider value={{ page, perPage, items, error, isLoad, total }}>
             <Search updateData={updateData} updateData3={updateDate3} />
             <Outlet></Outlet>
             <Pagination updateData={updateData2} />

@@ -11,15 +11,15 @@ type Props = {
 
 export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   let inputValue = '';
-  const [value, setValue] = useState(''); //Нужно передать Value в Redux?
+  const [value, setValue] = useState('');
   const [numPage, setNumPage] = useState('10');
 
   const dispatch = useDispatch();
   const runDispath = () => dispatch(addInputValue(value));
 
   const handleChange = (event: { target: { value: string } }) => {
-    setValue(event.target.value);
-    inputValue = event.target.value;
+    inputValue = event.target.value.trim();
+    setValue(inputValue);
     localStorage.setItem('inputKey', inputValue);
   };
 

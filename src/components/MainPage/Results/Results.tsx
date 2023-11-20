@@ -24,13 +24,13 @@ type Props = {
 
 export const Results: FC<Props> = () => {
   const [text] = useSelector((state) => state.data.rss);
-  console.log(text);
-  // console.log('render');
+  // console.log(text);
 
   const storageKey = localStorage.getItem('inputKey');
   const { items, error, isLoad } = useDataContext();
 
   const resultContent = () => {
+    console.log(items);
     const mapContent = (
       <div className="itemBigContainer">
         <div className="itemWrapper">
@@ -40,7 +40,6 @@ export const Results: FC<Props> = () => {
                 <li>{`title: ${item.title}`}</li>
                 <li>{`brand: ${item.brand}`}</li>
                 <li>{`price: ${item.price} $`}</li>
-                {/* <li>{text ? text.text : 'empty'}</li> */}
               </Link>
             ))}
           </div>
@@ -56,9 +55,12 @@ export const Results: FC<Props> = () => {
     } else {
       if (storageKey !== null) {
         const trail = storageKey.trim().toLowerCase();
-        const results = items.filter((item) => item.title.toLowerCase().includes(trail));
+        //TODO: results is empty in NOT 1T PAGE. Bug for pagination here
+        //TODO: Проблема видимо в том, как реализован поиск в API. Он не находит по фильтру там ключ и потому пишет Nothing found
+        // const results = items.filter((item) => item.title.toLowerCase().includes(trail));
+        // console.log(`results = ${results}`);
 
-        const content = results.length > 0 ? mapContent : <>Nothing found</>;
+        const content = items.length > 0 ? mapContent : <>Nothing found</>;
 
         return content;
       } else {
