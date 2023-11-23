@@ -4,24 +4,23 @@ const rssSlice = createSlice({
   name: 'rss',
   initialState: {
     rss: [],
+    products: [],
   },
   reducers: {
     addInputValue(state, action) {
-      console.log(state);
-      console.log(action);
+      // console.log(state);
+      // console.log(action);
 
       state.rss.push({
         text: action.payload,
       });
-      console.log(state.rss);
+      // console.log(state.rss);
     },
     addApiData(state, action) {
       console.log(state);
       console.log(action);
 
-      state.rss.push({
-        items2: action ? action.payload : [],
-      });
+      state.products = action.payload;
     },
   },
 });

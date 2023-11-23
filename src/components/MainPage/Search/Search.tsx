@@ -14,8 +14,8 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   const [value, setValue] = useState('');
   const [numPage, setNumPage] = useState('10');
 
-  const dispatch = useDispatch();
-  const runDispath = () => dispatch(addInputValue(value));
+  // const dispatch = useDispatch();
+  // const runDispath = () => dispatch(addInputValue(value));
 
   const handleChange = (event: { target: { value: string } }) => {
     inputValue = event.target.value.trim();
@@ -30,7 +30,8 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
 
   const handleClick = () => {
     updateData(value);
-    runDispath();
+    // runDispath();
+    // console.log('updateData from search');
   };
 
   useEffect(() => {

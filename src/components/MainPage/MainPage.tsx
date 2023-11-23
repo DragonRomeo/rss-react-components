@@ -27,11 +27,24 @@ export const MainPage: FC<Props> = () => {
   const [total, setTotal] = useState(0);
 
   const dispatch = useDispatch();
-  const itemsDispatch = (items) => dispatch(addApiData(items));
+
   const storageKey = localStorage.getItem('inputKey');
   const skipValue = perPage ? +perPage * +page - +perPage : 0;
 
+  const updateData = (value: string) => {
+    setSearch(value);
+  };
+
+  const updateData2 = (value: string) => {
+    setPage(value);
+  };
+
+  const updateDate3 = (value: string) => {
+    setPerPage(value);
+  };
+
   useEffect(() => {
+    const itemsDispatch = (products) => dispatch(addApiData(products));
     const getData = () => {
       setIsLoad(false);
       let url: string;
@@ -50,16 +63,18 @@ export const MainPage: FC<Props> = () => {
         newURL.searchParams.append('skip', skipValue.toString());
 
         url = newURL.href;
+        console.log(url);
       }
 
       fetch(url)
         .then((response) => response.json())
         .then(
           (result) => {
-            console.log(result);
             setItems(result.products);
             setTotal(+result.total);
+            console.log('передача items в main page');
             itemsDispatch(result.products);
+            console.log(result.products);
           },
           (error) => {
             console.log(error);
@@ -69,19 +84,7 @@ export const MainPage: FC<Props> = () => {
         .finally(() => setIsLoad(true));
     };
     getData();
-  }, [storageKey, search, perPage, skipValue]);
-
-  const updateData = (value: string) => {
-    setSearch(value);
-  };
-
-  const updateData2 = (value: string) => {
-    setPage(value);
-  };
-
-  const updateDate3 = (value: string) => {
-    setPerPage(value);
-  };
+  }, [storageKey, search, perPage, skipValue, dispatch]);
 
   return (
     <div className="pc">

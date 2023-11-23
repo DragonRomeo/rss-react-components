@@ -23,9 +23,10 @@ type Props = {
 };
 
 export const Results: FC<Props> = () => {
-  const [text, items2] = useSelector((state) => state.data.rss);
-  console.log(items2);
-  const items = items2 ? items2.items2 : undefined;
+  const products = useSelector((state) => state.data.products);
+  console.log('Рендер results и получение items');
+  console.log(products);
+  const items = products ? products : undefined;
 
   const storageKey = localStorage.getItem('inputKey');
   const { error, isLoad } = useDataContext();
