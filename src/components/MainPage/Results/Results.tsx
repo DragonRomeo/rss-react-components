@@ -24,15 +24,12 @@ type Props = {
 
 export const Results: FC<Props> = () => {
   const products = useSelector((state) => state.data.products);
-  console.log('Рендер results и получение items');
-  console.log(products);
   const items = products ? products : undefined;
 
   const storageKey = localStorage.getItem('inputKey');
   const { error, isLoad } = useDataContext();
 
   const resultContent = () => {
-    // console.log(items);
     const mapContent = items ? (
       <div className="itemBigContainer">
         <div className="itemWrapper">

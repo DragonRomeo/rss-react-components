@@ -18,7 +18,6 @@ export const SinglePage = () => {
         return res.json();
       })
       .then((data) => {
-        // console.log(data);
         setPost(data);
       });
   }, [id]);

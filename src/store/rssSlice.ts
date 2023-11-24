@@ -8,18 +8,11 @@ const rssSlice = createSlice({
   },
   reducers: {
     addInputValue(state, action) {
-      // console.log(state);
-      // console.log(action);
-
       state.rss.push({
         text: action.payload,
       });
-      // console.log(state.rss);
     },
     addApiData(state, action) {
-      console.log(state);
-      console.log(action);
-
       state.products = action.payload;
     },
   },

@@ -56,14 +56,12 @@ export const MainPage: FC<Props> = () => {
         newURL.searchParams.append('skip', skipValue.toString());
 
         url = newURL.href;
-        console.log(url);
       } else {
         const newURL = new URL(mainUrl);
         newURL.searchParams.append('limit', perPage);
         newURL.searchParams.append('skip', skipValue.toString());
 
         url = newURL.href;
-        console.log(url);
       }
 
       fetch(url)
@@ -72,12 +70,9 @@ export const MainPage: FC<Props> = () => {
           (result) => {
             setItems(result.products);
             setTotal(+result.total);
-            console.log('передача items в main page');
             itemsDispatch(result.products);
-            console.log(result.products);
           },
           (error) => {
-            console.log(error);
             setError(error);
           }
         )
