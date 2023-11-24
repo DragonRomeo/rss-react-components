@@ -11,7 +11,8 @@ export const dummyApi = createApi({
     //'format=json' maybe this is extra and don't need.
 
     getProductByKey: builder.query({
-      query: (searchValue) => `/products/search?q=${searchValue}?format=json`,
+      query: ({ searchValue, limit, skip }) =>
+        `/products/search?q=${searchValue}&limit=${limit}&skip=${skip}&?format=json`,
     }),
   }),
 });

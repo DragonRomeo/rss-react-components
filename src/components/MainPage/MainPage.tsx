@@ -2,12 +2,14 @@ import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { DataContext } from '../../providers/context';
-import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 import { Pagination } from './Pagination/Pagination';
 import { Search } from './Search/Search';
 import { Products } from './Results/Results';
 import { useDispatch } from 'react-redux';
 import { addApiData } from '../../store/rssSlice';
+// import { useGetProductsQuery } from '../../store/apiSlice';
+import { useGetProductByKeyQuery } from '../../store/apiSlice';
+import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 
 type Props = {
   children?: JSX.Element;
@@ -20,16 +22,17 @@ export const MainPage: FC<Props> = () => {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState('1');
   const [perPage, setPerPage] = useState('10');
+  console.log(perPage);
 
-  const [error, setError] = useState<null | Error>(null);
+  const [errorOld, setError] = useState<null | Error>(null);
   const [isLoad, setIsLoad] = useState(false);
   const [items, setItems] = useState<Array<Products>>([]);
   const [total, setTotal] = useState(0);
-
+  console.log(perPage);
   const dispatch = useDispatch();
-
   const storageKey = localStorage.getItem('inputKey');
   const skipValue = perPage ? +perPage * +page - +perPage : 0;
+  console.log(perPage);
 
   const updateData = (value: string) => {
     setSearch(value);
@@ -45,6 +48,7 @@ export const MainPage: FC<Props> = () => {
 
   useEffect(() => {
     const itemsDispatch = (products) => dispatch(addApiData(products));
+
     const getData = () => {
       setIsLoad(false);
       let url: string;
@@ -56,6 +60,7 @@ export const MainPage: FC<Props> = () => {
         newURL.searchParams.append('skip', skipValue.toString());
 
         url = newURL.href;
+        console.log(url);
       } else {
         const newURL = new URL(mainUrl);
         newURL.searchParams.append('limit', perPage);
@@ -85,7 +90,9 @@ export const MainPage: FC<Props> = () => {
     <div className="pc">
       <div className="pageWrapper">
         <div className="mainPage">
-          <DataContext.Provider value={{ page, perPage, items, error, isLoad, total }}>
+          <DataContext.Provider
+            value={{ page, perPage, items, error: errorOld, isLoad, total, skipValue }}
+          >
             <Search updateData={updateData} updateData3={updateDate3} />
             <Outlet></Outlet>
             <Pagination updateData={updateData2} />

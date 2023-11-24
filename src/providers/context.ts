@@ -9,6 +9,7 @@ export interface IContext {
   error: Error | null;
   isLoad: boolean;
   total: number;
+  skipValue?: number;
 }
 export const DataContext = createContext<IContext | null>(null);
 export const useDataContext = (): IContext => {

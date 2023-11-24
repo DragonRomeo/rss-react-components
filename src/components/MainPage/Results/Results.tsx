@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useDataContext } from '../../../providers/context';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useGetProductByKeyQuery } from '../../../store/apiSlice';
 
 export interface Products {
   id: number;
@@ -24,10 +25,26 @@ type Props = {
 
 export const Results: FC<Props> = () => {
   const products = useSelector((state) => state.data.products);
-  const items = products ? products : undefined;
+
+  const { perPage, skipValue } = useDataContext();
 
   const storageKey = localStorage.getItem('inputKey');
-  const { error, isLoad } = useDataContext();
+
+  const searchValue = storageKey ? storageKey : '';
+
+  const { data, isLoading, error } = useGetProductByKeyQuery({
+    searchValue: searchValue,
+    limit: perPage,
+    skip: skipValue,
+  });
+
+  //Loader not working anymore coz 'Query is currently loading for the first time. No data yet.'
+
+  const items = data ? data.products : undefined;
+  console.log(data);
+  console.log(isLoading);
+
+  // const { error, isLoad } = useDataContext();
 
   const resultContent = () => {
     const mapContent = items ? (
@@ -51,7 +68,7 @@ export const Results: FC<Props> = () => {
 
     if (error) {
       return <p className="status">Error: {error.message}</p>;
-    } else if (!isLoad) {
+    } else if (isLoading) {
       return <p className="status">Loading...</p>;
     } else {
       if (storageKey !== null) {
