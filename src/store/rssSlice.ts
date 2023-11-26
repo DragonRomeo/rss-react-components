@@ -3,14 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const rssSlice = createSlice({
   name: 'rss',
   initialState: {
-    rss: [],
+    search: [],
     products: [],
   },
   reducers: {
     addInputValue(state, action) {
-      state.rss.push({
-        text: action.payload,
-      });
+      state.search = action.payload;
     },
     addApiData(state, action) {
       state.products = action.payload;

@@ -5,11 +5,11 @@ import { addInputValue } from '../../../store/rssSlice';
 
 type Props = {
   children?: JSX.Element;
-  updateData: (value: string) => void;
+  updateData?: (value: string) => void; //Unusual callback for transfer searchValue
   updateData3: (value: string) => void;
 };
 
-export const Search: FC<Props> = ({ updateData, updateData3 }) => {
+export const Search: FC<Props> = ({ updateData3 }) => {
   let inputValue = '';
   const [value, setValue] = useState('');
   const [numPage, setNumPage] = useState('10');
@@ -29,7 +29,6 @@ export const Search: FC<Props> = ({ updateData, updateData3 }) => {
   };
 
   const handleClick = () => {
-    updateData(value);
     runDispath();
   };
 

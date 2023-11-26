@@ -1,11 +1,18 @@
 import { createContext, useContext } from 'react';
 import { Products } from '../components/MainPage/Results/Results';
 
+type Data = {
+  limit: number;
+  products: Array<Products>;
+  skip: number;
+  total: number;
+};
+
 export interface IContext {
   search?: string;
   page: string;
   perPage: string;
-  data?: Array<Products>;
+  data?: Data;
   error: Error | null;
   isLoading: boolean;
   total: number;

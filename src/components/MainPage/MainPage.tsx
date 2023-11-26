@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { DataContext } from '../../providers/context';
 import { Pagination } from './Pagination/Pagination';
 import { Search } from './Search/Search';
-import { useDispatch } from 'react-redux';
 import { useGetProductByKeyQuery } from '../../store/apiSlice';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 
 type Props = {
@@ -13,19 +13,15 @@ type Props = {
 };
 
 export const MainPage: FC<Props> = () => {
-  const [search, setSearch] = useState('');
   const [page, setPage] = useState('1');
   const [perPage, setPerPage] = useState('10');
   const [total, setTotal] = useState(0);
 
-  const dispatch = useDispatch();
+  const search = useSelector((state) => state.data.search);
+  console.log(search);
   const storageKey = localStorage.getItem('inputKey');
   const skipValue = perPage ? +perPage * +page - +perPage : 0;
   const searchValue = storageKey ? storageKey : '';
-
-  const updateData = (value: string) => {
-    setSearch(value);
-  };
 
   const updateData2 = (value: string) => {
     setPage(value);
@@ -45,14 +41,14 @@ export const MainPage: FC<Props> = () => {
     if (data) {
       setTotal(data.total);
     }
-  }, [data]);
+  }, [data, search]);
 
   return (
     <div className="pc">
       <div className="pageWrapper">
         <div className="mainPage">
           <DataContext.Provider value={{ page, perPage, data, error, isLoading, total, skipValue }}>
-            <Search updateData={updateData} updateData3={updateDate3} />
+            <Search updateData3={updateDate3} />
             <Outlet></Outlet>
             <Pagination updateData={updateData2} />
           </DataContext.Provider>
