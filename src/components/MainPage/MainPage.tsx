@@ -4,9 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { DataContext } from '../../providers/context';
 import { Pagination } from './Pagination/Pagination';
 import { Search } from './Search/Search';
-import { Products } from './Results/Results';
 import { useDispatch } from 'react-redux';
-import { addApiData } from '../../store/rssSlice';
 import { useGetProductByKeyQuery } from '../../store/apiSlice';
 import ErrorBtn from '../ErrorBoundary/ErrorBtn/ErrorBtn';
 
@@ -14,17 +12,10 @@ type Props = {
   children?: JSX.Element;
 };
 
-const mainUrl = `https://dummyjson.com/products`;
-const searchUrl = `https://dummyjson.com/products/search`;
-
 export const MainPage: FC<Props> = () => {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState('1');
   const [perPage, setPerPage] = useState('10');
-
-  const [errorOld, setError] = useState<null | Error>(null);
-  const [isLoad, setIsLoad] = useState(false);
-  const [items, setItems] = useState<Array<Products>>([]);
   const [total, setTotal] = useState(0);
 
   const dispatch = useDispatch();
@@ -49,51 +40,11 @@ export const MainPage: FC<Props> = () => {
     limit: perPage,
     skip: skipValue,
   });
-  console.log(data);
 
   useEffect(() => {
     if (data) {
       setTotal(data.total);
-      console.log(data.total);
     }
-
-    // const itemsDispatch = (products) => dispatch(addApiData(products));
-
-    // const getData = () => {
-    //   setIsLoad(false);
-    //   let url: string;
-
-    //   if (storageKey) {
-    //     const newURL = new URL(searchUrl);
-    //     newURL.searchParams.append('q', storageKey);
-    //     newURL.searchParams.append('limit', perPage);
-    //     newURL.searchParams.append('skip', skipValue.toString());
-
-    //     url = newURL.href;
-    //     console.log(url);
-    //   } else {
-    //     const newURL = new URL(mainUrl);
-    //     newURL.searchParams.append('limit', perPage);
-    //     newURL.searchParams.append('skip', skipValue.toString());
-
-    //     url = newURL.href;
-    //   }
-
-    //   fetch(url)
-    //     .then((response) => response.json())
-    //     .then(
-    //       (result) => {
-    //         setItems(result.products);
-    //         setTotal(+result.total);
-    //         itemsDispatch(result.products);
-    //       },
-    //       (error) => {
-    //         setError(error);
-    //       }
-    //     )
-    //     .finally(() => setIsLoad(true));
-    // };
-    // getData();
   }, [data]);
 
   return (

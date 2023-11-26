@@ -8,9 +8,7 @@ interface Props {
 export const Pagination: FC<Props> = ({ updateData }) => {
   const navigate = useNavigate();
   const { perPage, total } = useDataContext();
-  console.log(perPage, total);
   const numberOfPage = Math.ceil(total / +perPage);
-  console.log(numberOfPage);
   const arrPage = new Array(numberOfPage).fill(0);
 
   const handleClick = (event: MouseEvent) => {

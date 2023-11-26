@@ -5,9 +5,9 @@ export interface IContext {
   search?: string;
   page: string;
   perPage: string;
-  items?: Array<Products>;
+  data?: Array<Products>;
   error: Error | null;
-  isLoad: boolean;
+  isLoading: boolean;
   total: number;
   skipValue?: number;
 }

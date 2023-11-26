@@ -23,9 +23,6 @@ type Props = {
 };
 
 export const Results: FC<Props> = () => {
-  // const products = useSelector((state) => state.data.products);
-  // const items = products ? products : undefined;
-  //Брать данные не из Products, а снова из items
   const storageKey = localStorage.getItem('inputKey');
   const { data, error, isLoading } = useDataContext();
 
