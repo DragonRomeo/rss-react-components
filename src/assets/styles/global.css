@@ -17,11 +17,12 @@ body {
 
 #root {
   width: 100%;
-  min-width: 1251px;
+  min-width: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  min-height: 923px;
 }
 
 h1 {
@@ -32,16 +33,19 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('../images/vecteezy_old-vintage-pc-clipart-design-illustration_9385553_678.png');
+  background-image: url('../images/pc-bg.png');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
-  max-width: 1250px;
+  max-width: 800px;
   height: 100vh;
+  min-height: 923px;
 }
 
 .pageWrapper {
   padding-top: 72px;
-  width: 35%;
+  width: 56%;
 }
 
 .mainPage {
@@ -50,7 +54,7 @@ h1 {
   align-items: flex-start;
   width: 100%;
   background-color: black;
-  height: 406px;
+  height: 416px;
   padding-left: 20px;
 }
 
@@ -146,8 +150,8 @@ li {
 }
 
 .errorBtnWrapper {
-  margin-top: 240px;
-  width: 711px;
+  margin-top: 247px;
+  width: 726px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
