@@ -17,6 +17,7 @@ body {
 
 #root {
   width: 100%;
+  min-width: 1251px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +34,8 @@ h1 {
   align-items: center;
   background-image: url('../images/vecteezy_old-vintage-pc-clipart-design-illustration_9385553_678.png');
   background-size: cover;
-  width: 1250px;
+  width: 100%;
+  max-width: 1250px;
   height: 100vh;
 }
 
@@ -211,6 +213,4 @@ li {
 }
 
 @media screen and (min-width: 1250px) {
- 
 }
-
